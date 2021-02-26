@@ -19,6 +19,10 @@ public class PlayerController : MonoBehaviour
 
     // Misc gameplay setup
     int kittensReleasedNum;
+    public bool hasPinkKey;
+    public bool hasGreenKey;
+    public bool hasPurpleKey;
+    public bool hasBlackKey;
 
     // UI setup
 
@@ -48,10 +52,21 @@ public class PlayerController : MonoBehaviour
         
     }
 
+    // Gameplay logic
+
     public void ReleaseKitten()
     {
         kittensReleasedNum++;
         kittensReleased.SetText(kittensReleasedNum.ToString());
+    }
+
+    public void GetKey(string color)
+    {
+        if (color == "pink")
+        {
+            hasPinkKey = true;
+        }
+
     }
 
 

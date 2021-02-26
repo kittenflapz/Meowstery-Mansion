@@ -16,6 +16,7 @@ public class KittenCage : MonoBehaviour
 
     bool wasOpened;
     AudioSource meow;
+    PuzzleColor color;
     PlayerController player;
 
     private void Awake()
@@ -36,8 +37,37 @@ public class KittenCage : MonoBehaviour
        
         if (collision.gameObject.CompareTag("Player") && !wasOpened)
         {
-            player.ReleaseKitten();
-            Open();
+            switch (color)
+            {
+                case PuzzleColor.BLACK:
+                    if (player.hasBlackKey)
+                    {
+                        player.ReleaseKitten();
+                        Open();
+                    }
+                    break;
+                case PuzzleColor.PINK:
+                    if (player.hasPinkKey)
+                    {
+                        player.ReleaseKitten();
+                        Open();
+                    }
+                    break;
+                case PuzzleColor.PURPLE:
+                    if (player.hasPurpleKey)
+                    {
+                        player.ReleaseKitten();
+                        Open();
+                    }
+                    break;
+                case PuzzleColor.GREEN:
+                    if (player.hasGreenKey)
+                    {
+                        player.ReleaseKitten();
+                        Open();
+                    }
+                    break;
+            }      
         }
     }
 
@@ -48,15 +78,19 @@ public class KittenCage : MonoBehaviour
         {
             case PuzzleColor.BLACK:
                 GetComponent<MeshRenderer>().material.SetColor("_Color", black);
+                color = PuzzleColor.BLACK;
                 break;
             case PuzzleColor.PINK:
                 GetComponent<MeshRenderer>().material.SetColor("_Color", pink);
+                color = PuzzleColor.PINK;
                 break;
             case PuzzleColor.PURPLE:
                 GetComponent<MeshRenderer>().material.SetColor("_Color", purple);
+                color = PuzzleColor.PURPLE;
                 break;
             case PuzzleColor.GREEN:
                 GetComponent<MeshRenderer>().material.SetColor("_Color", green);
+                color = PuzzleColor.GREEN;
                 break;
         }
     }
