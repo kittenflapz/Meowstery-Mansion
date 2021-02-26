@@ -42,8 +42,9 @@ public class KittenCage : MonoBehaviour
     }
 
     public void SetCageColor(PuzzleColor puzzleColor)
-    {
-        switch(puzzleColor)
+    {   
+        
+       switch(puzzleColor)
         {
             case PuzzleColor.BLACK:
                 GetComponent<MeshRenderer>().material.SetColor("_Color", black);
