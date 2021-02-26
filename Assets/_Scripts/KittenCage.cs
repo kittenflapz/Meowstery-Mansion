@@ -18,6 +18,7 @@ public class KittenCage : MonoBehaviour
     AudioSource meow;
     PuzzleColor color;
     PlayerController player;
+    Animator animator;
 
     MeshRenderer[] meshRenderers;
 
@@ -26,20 +27,22 @@ public class KittenCage : MonoBehaviour
         meow = GetComponent<AudioSource>();
         player = FindObjectOfType<PlayerController>();
         meshRenderers = GetComponentsInChildren<MeshRenderer>();
+        animator = GetComponentInChildren<Animator>();
     }
 
     public void Open()
     {
         meow.Play();
         wasOpened = true;
-        GetComponent<MeshRenderer>().material.SetColor("_Color",Color.white);
+    
+        animator.SetTrigger("OpenCage");
+        print("hello");
     }
 
     public void OnTriggerEnter(Collider collision)
     {
         if (collision.gameObject.CompareTag("Player") && !wasOpened)
         {
-            print("hello");
             switch (color)
             {
                 case PuzzleColor.BLACK:
