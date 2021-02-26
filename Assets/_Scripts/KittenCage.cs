@@ -19,10 +19,13 @@ public class KittenCage : MonoBehaviour
     PuzzleColor color;
     PlayerController player;
 
+    MeshRenderer[] meshRenderers;
+
     private void Awake()
     {
         meow = GetComponent<AudioSource>();
         player = FindObjectOfType<PlayerController>();
+        meshRenderers = GetComponentsInChildren<MeshRenderer>();
     }
 
     public void Open()
@@ -32,11 +35,11 @@ public class KittenCage : MonoBehaviour
         GetComponent<MeshRenderer>().material.SetColor("_Color",Color.white);
     }
 
-    private void OnCollisionEnter(Collision collision)
+    public void OnTriggerEnter(Collider collision)
     {
-       
         if (collision.gameObject.CompareTag("Player") && !wasOpened)
         {
+            print("hello");
             switch (color)
             {
                 case PuzzleColor.BLACK:
@@ -67,7 +70,7 @@ public class KittenCage : MonoBehaviour
                         Open();
                     }
                     break;
-            }      
+            }
         }
     }
 
@@ -77,21 +80,29 @@ public class KittenCage : MonoBehaviour
        switch(puzzleColor)
         {
             case PuzzleColor.BLACK:
-                GetComponent<MeshRenderer>().material.SetColor("_Color", black);
+                SetAllMeshRendererColors(black);
                 color = PuzzleColor.BLACK;
                 break;
             case PuzzleColor.PINK:
-                GetComponent<MeshRenderer>().material.SetColor("_Color", pink);
+                SetAllMeshRendererColors(pink);
                 color = PuzzleColor.PINK;
                 break;
             case PuzzleColor.PURPLE:
-                GetComponent<MeshRenderer>().material.SetColor("_Color", purple);
+                SetAllMeshRendererColors(purple);
                 color = PuzzleColor.PURPLE;
                 break;
             case PuzzleColor.GREEN:
-                GetComponent<MeshRenderer>().material.SetColor("_Color", green);
+                SetAllMeshRendererColors(green);
                 color = PuzzleColor.GREEN;
                 break;
+        }
+    }
+
+    private void SetAllMeshRendererColors(Color color)
+    {
+        foreach (MeshRenderer meshRenderer in meshRenderers)
+        {
+            meshRenderer.material.SetColor("_Color", color);
         }
     }
 
