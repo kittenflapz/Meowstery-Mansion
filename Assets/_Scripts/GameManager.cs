@@ -22,8 +22,25 @@ public class GameManager : MonoBehaviour
 
     [SerializeField]
     Button getPinkKeyButton;
+    [SerializeField]
+    Button getBlackKeyButton;
+    [SerializeField]
+    Button getPurpleKeyButton;
+    [SerializeField]
+    Button getGreenKeyButton;
+
+    [SerializeField]
+    GameObject winTriggerBox;
+
+    [SerializeField]
+    GameObject winMenu;
 
     string pinkAnswer = "what";
+    string blackAnswer = "my shadow";
+    string purpleAnswer = "1";
+    string greenAnswer = "el";
+
+    bool canWin = false;
 
     // Start is called before the first frame update
     void Start()
@@ -53,5 +70,47 @@ public class GameManager : MonoBehaviour
         {
             getPinkKeyButton.gameObject.SetActive(true);
         }
+    }
+    public void CheckBlackAnswer(string input)
+    {
+        if (input.ToLower() == blackAnswer)
+        {
+            getBlackKeyButton.gameObject.SetActive(true);
+        }
+    }
+
+    public void CheckPurpleAnswer(string input)
+    {
+        if (input.ToLower() == purpleAnswer)
+        {
+            getPurpleKeyButton.gameObject.SetActive(true);
+        }
+    }
+    
+    public void CheckGreenAnswer(string input)
+    {
+        if (input.ToLower() == greenAnswer)
+        {
+            getGreenKeyButton.gameObject.SetActive(true);
+        }
+    }
+
+    public void CheckIfCanWin(int numKittensReleased)
+    {
+        if (numKittensReleased == 4 && canWin == false)
+        {
+            canWin = true;
+            OnCanWin();
+        }
+    }
+
+    private void OnCanWin()
+    {
+        winTriggerBox.SetActive(true);
+    }
+
+    public void OnWin()
+    {
+        winMenu.SetActive(true);
     }
 }

@@ -24,6 +24,10 @@ public class PlayerController : MonoBehaviour
     public bool hasPurpleKey;
     public bool hasBlackKey;
 
+
+    [SerializeField]
+    GameManager gameManager;
+
     // UI setup
 
     [SerializeField]
@@ -37,6 +41,7 @@ public class PlayerController : MonoBehaviour
         moveDirection = Vector3.zero;
         inputVector = Vector2.zero;
         rotationDirection = 0;
+        gameManager = FindObjectOfType<GameManager>();
     }
 
 
@@ -58,14 +63,30 @@ public class PlayerController : MonoBehaviour
     {
         kittensReleasedNum++;
         kittensReleased.SetText(kittensReleasedNum.ToString());
+        gameManager.CheckIfCanWin(kittensReleasedNum);
     }
 
     public void GetKey(string color)
     {
-        if (color == "pink")
+ 
+        switch(color)
         {
-            hasPinkKey = true;
+            case "pink":
+                hasPinkKey = true;
+                break;
+            case "black":
+                hasBlackKey = true;
+                break;
+            case "green":
+                hasGreenKey = true;
+                break;
+            case "purple":
+                hasPurpleKey = true;
+                break;
+            default:
+                break;
         }
+
 
     }
 
