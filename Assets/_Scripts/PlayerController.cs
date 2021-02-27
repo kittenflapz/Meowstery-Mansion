@@ -56,6 +56,11 @@ public class PlayerController : MonoBehaviour
         rotationDirection = 0;
         gameManager = FindObjectOfType<GameManager>();
         StartCoroutine(WaitAndDismissIntroText(5));
+
+        isPaused = false;
+
+        // fixes a bug where if you pause, go to main menu, then load into the game again, it is still paused
+        Time.timeScale = 1;
     }
 
 

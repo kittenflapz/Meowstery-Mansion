@@ -39,7 +39,7 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""60d75503-8b00-4224-a85f-1c6635900b04"",
-                    ""path"": ""<Keyboard>/p"",
+                    ""path"": ""<Keyboard>/tab"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
