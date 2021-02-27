@@ -23,7 +23,7 @@ public class PlayerController : MonoBehaviour
     public bool hasGreenKey;
     public bool hasPurpleKey;
     public bool hasBlackKey;
-
+    bool isPaused;
 
     [SerializeField]
     GameManager gameManager;
@@ -130,6 +130,17 @@ public class PlayerController : MonoBehaviour
 
     public void OnPause()
     {
+        if (isPaused)
+        {
+            Time.timeScale = 1;
+            isPaused = false;
+        }
+        else
+        {
+            Time.timeScale = 0;
+            isPaused = true;
+        }
+
         pauseMenu.SetActive(!pauseMenu.activeInHierarchy);
     }
 
