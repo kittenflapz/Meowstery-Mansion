@@ -33,6 +33,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     GameObject pauseMenu;
     [SerializeField]
+    GameObject introText;
+    [SerializeField]
     GameObject pinkKeyIcon;
     [SerializeField]
     GameObject greenKeyIcon;
@@ -48,6 +50,7 @@ public class PlayerController : MonoBehaviour
         inputVector = Vector2.zero;
         rotationDirection = 0;
         gameManager = FindObjectOfType<GameManager>();
+        StartCoroutine(WaitAndDismissIntroText(5));
     }
 
 
@@ -115,6 +118,13 @@ public class PlayerController : MonoBehaviour
 
     }
 
+
+    public IEnumerator WaitAndDismissIntroText(float seconds)
+    {
+        yield return new WaitForSeconds(seconds);
+        introText.GetComponent<Animator>().SetTrigger("Dismiss");
+
+    }
 
     // Input handling
 

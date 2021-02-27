@@ -157,7 +157,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 1.554, y: -0.646, z: 35}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -213, y: 167}
+  m_AnchoredPosition: {x: -144.77084, y: 92.625015}
   m_SizeDelta: {x: 345.2433, y: 56.8138}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &338075147
@@ -909,7 +909,7 @@ GameObject:
   - component: {fileID: 1565142227}
   - component: {fileID: 1565142226}
   m_Layer: 5
-  m_Name: MainMenuCanvas
+  m_Name: CreditsCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
