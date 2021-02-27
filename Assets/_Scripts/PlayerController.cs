@@ -69,7 +69,7 @@ public class PlayerController : MonoBehaviour
         // Movement handling
 
         moveDirection = playerTransform.forward * inputVector.y;
-        rotationDirection = inputVector.x;
+        rotationDirection = inputVector.x * 1.75f;
 
         if (moveDirection.magnitude > float.Epsilon || rotationDirection > float.Epsilon)
         {
