@@ -17,6 +17,10 @@ public class PlayerController : MonoBehaviour
     float rotationDirection;
     private Vector2 inputVector;
 
+    // Animation setup (forgive me)
+    [SerializeField]
+    Animator animator;
+
     // Misc gameplay setup
     int kittensReleasedNum;
     public bool hasPinkKey;
@@ -60,6 +64,16 @@ public class PlayerController : MonoBehaviour
 
         moveDirection = playerTransform.forward * inputVector.y;
         rotationDirection = inputVector.x;
+
+        if (moveDirection.magnitude > float.Epsilon || rotationDirection > float.Epsilon)
+        {
+            animator.SetInteger("Walk", 1);
+        }
+        else
+        {
+            animator.SetInteger("Walk", 0);
+        }
+
         Vector3 movementDirection = moveDirection * (speed * Time.deltaTime);
         playerTransform.position += movementDirection;
         playerTransform.Rotate(new Vector3(0, rotationDirection, 0));
@@ -146,6 +160,9 @@ public class PlayerController : MonoBehaviour
 
     public void OnMovement(InputValue value)
     {
-        inputVector = value.Get<Vector2>();
+        if (!isPaused)
+        {
+            inputVector = value.Get<Vector2>();
+        }
     }
 }

@@ -6,6 +6,7 @@ public class InputMonoBehaviour : MonoBehaviour
 {
     protected PlayerInputActions GameInput;
 
+
     protected void Awake()
     {
         GameInput = new PlayerInputActions();
@@ -20,4 +21,6 @@ public class InputMonoBehaviour : MonoBehaviour
     {
         GameInput.Disable();
     }
+
+  
 }
