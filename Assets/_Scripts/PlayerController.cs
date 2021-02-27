@@ -32,6 +32,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     GameManager gameManager;
 
+
     // UI setup
 
     [SerializeField]
@@ -84,7 +85,7 @@ public class PlayerController : MonoBehaviour
 
     public void ReleaseKitten(string color)
     {
-        switch(color)
+        switch (color)
         {
             case "pink":
                 pinkKeyIcon.SetActive(false);
@@ -98,10 +99,11 @@ public class PlayerController : MonoBehaviour
             case "black":
                 blackKeyIcon.SetActive(false);
                 break;
-        }    
+        }
 
         kittensReleasedNum++;
         gameManager.CheckIfCanWin(kittensReleasedNum);
+  
     }
 
     public void GetKey(string color)
@@ -139,6 +141,7 @@ public class PlayerController : MonoBehaviour
         introText.GetComponent<Animator>().SetTrigger("Dismiss");
 
     }
+
 
     // Input handling
 

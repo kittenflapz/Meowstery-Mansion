@@ -31,6 +31,10 @@ public class GameManager : MonoBehaviour
 
     [SerializeField]
     GameObject winTriggerBox;
+    
+    [SerializeField]
+    GameObject heavenLight;
+
 
     [SerializeField]
     GameObject winMenu;
@@ -106,11 +110,20 @@ public class GameManager : MonoBehaviour
 
     private void OnCanWin()
     {
-        winTriggerBox.GetComponent<Animator>().SetTrigger("SealMove");
+       StartCoroutine (WaitAndMoveSeal(3f));
     }
 
     public void OnWin()
     {
         winMenu.SetActive(true);
+    }
+
+    public IEnumerator WaitAndMoveSeal(float seconds)
+    {
+        yield return new WaitForSeconds(seconds);
+        winTriggerBox.GetComponent<Animator>().SetTrigger("SealMove");
+        winTriggerBox.GetComponent<AudioSource>().Play();
+        heavenLight.SetActive(true);
+
     }
 }

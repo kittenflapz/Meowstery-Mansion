@@ -36,7 +36,6 @@ public class KittenCage : MonoBehaviour
         wasOpened = true;
     
         animator.SetTrigger("OpenCage");
-        print("hello");
     }
 
     public void OnTriggerEnter(Collider collision)

@@ -15,7 +15,6 @@ public class WinSeal : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        print("hello");
         if (other.gameObject.CompareTag("Player"))
         {
             gameManager.OnWin();
