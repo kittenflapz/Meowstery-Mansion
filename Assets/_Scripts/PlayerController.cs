@@ -33,7 +33,13 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     GameObject pauseMenu;
     [SerializeField]
-    TextMeshProUGUI kittensReleased;
+    GameObject pinkKeyIcon;
+    [SerializeField]
+    GameObject greenKeyIcon;
+    [SerializeField]
+    GameObject purpleKeyIcon;
+    [SerializeField]
+    GameObject blackKeyIcon;
 
 
     private void Awake()
@@ -59,10 +65,25 @@ public class PlayerController : MonoBehaviour
 
     // Gameplay logic
 
-    public void ReleaseKitten()
+    public void ReleaseKitten(string color)
     {
+        switch(color)
+        {
+            case "pink":
+                pinkKeyIcon.SetActive(false);
+                break;
+            case "purple":
+                purpleKeyIcon.SetActive(false);
+                break;
+            case "green":
+                greenKeyIcon.SetActive(false);
+                break;
+            case "black":
+                blackKeyIcon.SetActive(false);
+                break;
+        }    
+
         kittensReleasedNum++;
-        kittensReleased.SetText(kittensReleasedNum.ToString());
         gameManager.CheckIfCanWin(kittensReleasedNum);
     }
 
@@ -73,15 +94,19 @@ public class PlayerController : MonoBehaviour
         {
             case "pink":
                 hasPinkKey = true;
+                pinkKeyIcon.SetActive(true);
                 break;
             case "black":
                 hasBlackKey = true;
+                blackKeyIcon.SetActive(true);
                 break;
             case "green":
                 hasGreenKey = true;
+                greenKeyIcon.SetActive(true);
                 break;
             case "purple":
                 hasPurpleKey = true;
+                purpleKeyIcon.SetActive(true);
                 break;
             default:
                 break;

@@ -48,28 +48,28 @@ public class KittenCage : MonoBehaviour
                 case PuzzleColor.BLACK:
                     if (player.hasBlackKey)
                     {
-                        player.ReleaseKitten();
+                        player.ReleaseKitten("black");
                         Open();
                     }
                     break;
                 case PuzzleColor.PINK:
                     if (player.hasPinkKey)
                     {
-                        player.ReleaseKitten();
+                        player.ReleaseKitten("pink");
                         Open();
                     }
                     break;
                 case PuzzleColor.PURPLE:
                     if (player.hasPurpleKey)
                     {
-                        player.ReleaseKitten();
+                        player.ReleaseKitten("purple");
                         Open();
                     }
                     break;
                 case PuzzleColor.GREEN:
                     if (player.hasGreenKey)
                     {
-                        player.ReleaseKitten();
+                        player.ReleaseKitten("green");
                         Open();
                     }
                     break;
