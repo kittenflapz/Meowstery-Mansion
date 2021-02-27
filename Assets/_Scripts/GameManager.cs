@@ -106,7 +106,7 @@ public class GameManager : MonoBehaviour
 
     private void OnCanWin()
     {
-        winTriggerBox.SetActive(true);
+        winTriggerBox.GetComponent<Animator>().SetTrigger("SealMove");
     }
 
     public void OnWin()
